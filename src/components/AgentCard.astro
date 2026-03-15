@@ -1,0 +1,47 @@
+---
+interface Props {
+  href: string;
+  title: string;
+  summary: string;
+  leverage: number;
+  execution: number;
+  roi: number;
+}
+
+const { href, title, summary, leverage, execution, roi } = Astro.props;
+---
+
+<a href={href} class="block group mb-4">
+  <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-all flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+    <!-- 左侧：标题与总结 -->
+    <div class="flex-grow">
+      <h3 class="text-xl font-bold text-gray-900 group-hover:text-orange-500 transition-colors mb-2">
+        {title}
+      </h3>
+      <p class="text-gray-500 text-sm leading-relaxed">
+        {summary}
+      </p>
+    </div>
+
+    <!-- 右侧：指标 Pill 标签 -->
+    <div class="flex flex-wrap gap-3 flex-shrink-0">
+      <div class="flex items-center bg-gray-50 px-3 py-1.5 rounded-full border border-gray-100">
+        <span class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mr-2">Leverage</span>
+        <span class="text-sm font-bold text-slate-700">{leverage}</span>
+      </div>
+      <div class="flex items-center bg-gray-50 px-3 py-1.5 rounded-full border border-gray-100">
+        <span class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mr-2">Execution</span>
+        <span class="text-sm font-bold text-slate-700">{execution}</span>
+      </div>
+      <div class="flex items-center bg-gray-50 px-3 py-1.5 rounded-full border border-gray-100">
+        <span class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mr-2">ROI</span>
+        <span class="text-sm font-bold text-orange-600 italic">x{roi}</span>
+      </div>
+      <div class="hidden md:flex items-center justify-center w-8 h-8 rounded-full bg-orange-50 text-orange-500 opacity-0 group-hover:opacity-100 transition-all group-hover:translate-x-1">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+        </svg>
+      </div>
+    </div>
+  </div>
+</a>
